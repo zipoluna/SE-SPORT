@@ -270,10 +270,16 @@ footer {
 
 /* --- 9. AJUSTES PARA MÓVIL (RESPONSIVE) --- */
 @media (max-width: 768px) {
-    .grid-cols-3 {
-        grid-template-columns: 1fr !important;
-        gap: 1.5rem;
+    .form-row {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
     }
+
+    .grid-cols-2 { 
+        grid-template-columns: 1fr !important; 
+    }
+}
 
     .price-card.featured {
         transform: scale(1) !important; 
@@ -296,4 +302,5 @@ footer {
     form input, form select, form textarea {
         font-size: 16px !important; /* Evita zoom molesto en iPhone */
     }
+
 }
