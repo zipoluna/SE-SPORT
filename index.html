@@ -184,7 +184,15 @@
             if(!n) { alert("Por favor, ingresa el nombre de tu equipo."); return; }
             if(parseInt(c) < 10) { alert("El pedido mínimo es de 10 unidades."); return; }
             
-            const msg = `Hola SE SPORT. Somos: ${n}.\nBuscamos: ${p} (${l}).\nCantidad: ${c} unidades.\nObs: ${o || '-'}.`;
+            // Mensaje con formato para WhatsApp
+            const msg = `🔥 *Hola, SE SPORT, busco presupuesto para:*\n\n` +
+                        `⚽ *Equipo:* ${n}\n` +
+                        `👕 *Línea:* ${l}\n` +
+                        `📦 *Producto:* ${p}\n` +
+                        `🔢 *Cantidad:* ${c} unidades\n` +
+                        `📝 *Obs:* ${o || 'Sin observaciones'}\n\n` +
+                        `_Enviado desde la web oficial_`;
+        
             window.open(`https://wa.me/595973293330?text=${encodeURIComponent(msg)}`, '_blank');
         }
 
@@ -200,3 +208,4 @@
 </body>
 
 </html>
+
