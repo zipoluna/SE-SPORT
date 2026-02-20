@@ -1,0 +1,299 @@
+/* SE SPORT - ESTILOS OFICIALES 2026
+    Diseño: Indumentaria Deportiva Profesional
+*/
+
+/* --- 1. RESET Y CONFIGURACIÓN BASE --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent; /* Evita destello azul en móviles */
+}
+
+html { 
+    scroll-behavior: smooth; 
+}
+
+:root {
+    --color-men-start: #06b6d4;
+    --color-men-end: #3ee3f5;
+    --color-she-start: #f72585;
+    --color-she-end: #ff7ab6;
+    --color-mini-start: #ff8c42;
+    --color-mini-end: #ffd27a;
+}
+
+body { 
+    background-color: #000; 
+    color: #fff; 
+    font-family: 'Montserrat', sans-serif; 
+    overflow-x: hidden;
+    line-height: 1.5;
+    /* SEGURIDAD: Evita copia de textos */
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* --- 2. CLASES DE UTILIDAD --- */
+.text-center { text-align: center; }
+.mx-auto { margin-left: auto; margin-right: auto; }
+.px-6 { padding-left: 1.5rem; padding-right: 1.5rem; }
+.py-24 { padding-top: 6rem; padding-bottom: 6rem; }
+.py-12 { padding-top: 3rem; padding-bottom: 3rem; }
+.font-black { font-weight: 900; }
+.uppercase { text-transform: uppercase; }
+.italic { font-style: italic; }
+.mb-4 { margin-bottom: 1rem; }
+.mb-8 { margin-bottom: 2rem; }
+.mb-16 { margin-bottom: 4rem; }
+.text-3xl { font-size: 1.875rem; }
+.text-4xl { font-size: 2.25rem; }
+
+/* --- 3. ESTRUCTURA DE SECCIONES & ZOOM --- */
+.bg-full { 
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden; 
+    background-color: #000;
+}
+
+.bg-img-container {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-size: cover;
+    background-position: center;
+    z-index: 1;
+    transform: scale(1.4); 
+    filter: blur(20px) brightness(0.2); 
+    transition: transform 3.5s cubic-bezier(0.16, 1, 0.3, 1), filter 2.5s ease;
+}
+
+.bg-full.in-view .bg-img-container {
+    transform: scale(1.05); 
+    filter: blur(0) brightness(0.5);
+}
+
+.smoke-layer {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: url('https://www.transparenttextures.com/patterns/asfalt-dark.png');
+    opacity: 0;
+    z-index: 2;
+    pointer-events: none;
+    transition: opacity 3s ease;
+}
+
+.bg-full.in-view .smoke-layer {
+    opacity: 0.3;
+    animation: smokeShift 60s linear infinite;
+}
+
+@keyframes smokeShift {
+    from { background-position: 0% 0%; }
+    to { background-position: 100% 100%; }
+}
+
+/* --- 4. CONTENIDO (LOGOS Y TEXTOS) --- */
+.section-content { 
+    position: relative;
+    z-index: 10;
+    opacity: 0; 
+    transform: translateY(50px);
+    transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.section-content.in-view { 
+    opacity: 1; 
+    transform: translateY(0);
+}
+
+.section-logo { 
+    max-height: 400px; 
+    width: auto; 
+    margin-bottom: 2rem;
+    filter: brightness(0) invert(1) drop-shadow(0 10px 20px rgba(0,0,0,0.5));
+    /* SEGURIDAD: Evita arrastrar logo */
+    pointer-events: none;
+}
+
+.sub-caption {
+    font-size: 14px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    opacity: 0.9;
+    margin-top: 15px;
+    font-weight: 400;
+    color: #fff;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+}
+
+/* --- 5. SIDEBARS (MENÚ Y SOCIAL) --- */
+.sidebar-left, .sidebar-right { 
+    position: fixed; top: 50%; transform: translateY(-50%); z-index: 100; 
+}
+.sidebar-left { left: 10px; }
+.sidebar-right { right: 10px; }
+
+.side-menu a, .side-social-right a { 
+    background: rgba(0, 0, 0, 0.6); 
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.3s ease;
+    text-decoration: none; color: #fff;
+    border-radius: 10px;
+}
+
+.side-menu a { width: 48px; height: 60px; margin-bottom: 5px; }
+.side-social-right a { width: 44px; height: 44px; margin-bottom: 8px; }
+
+.side-menu a .side-text { writing-mode: vertical-rl; transform: rotate(180deg); font-size: 9px; font-weight: 900; }
+
+.side-link.men:hover { background: linear-gradient(180deg, var(--color-men-start), var(--color-men-end)); color: #000; }
+.side-link.she:hover { background: linear-gradient(180deg, var(--color-she-start), var(--color-she-end)); color: #000; }
+.side-link.mini:hover { background: linear-gradient(180deg, var(--color-mini-start), var(--color-mini-end)); color: #000; }
+
+/* --- 6. SECCIÓN DE PRECIOS --- */
+section.bg-white, section.bg-gray-100 {
+    background-color: #fff !important;
+    color: #000 !important;
+    position: relative;
+    z-index: 20;
+}
+
+.grid { display: grid; gap: 2rem; }
+@media (min-width: 768px) { .grid-cols-3 { grid-template-columns: repeat(3, 1fr); } }
+
+.price-card {
+    padding: 2rem;
+    border-radius: 20px;
+    border: 1px solid #eee;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.price-card.featured {
+    background: #000;
+    color: #fff;
+    transform: scale(1.1);
+    z-index: 5;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+}
+
+/* --- 7. FORMULARIO PROFESIONAL --- */
+form input, form select, form textarea {
+    width: 100%;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 12px;
+    border: 1px solid #ddd;
+    font-family: inherit;
+    /* SEGURIDAD: Bloquea cambio de tamaño manual */
+    resize: none !important;
+    /* Habilitar selección para que el cliente pueda escribir */
+    user-select: text !important;
+    -webkit-user-select: text !important;    
+}
+
+.max-w-xl { 
+    max-width: 600px; 
+    margin-left: auto; 
+    margin-right: auto; 
+}
+
+/* Esto asegura que el contenedor gris del formulario también se centre */
+#contacto .max-w-xl {
+    display: block;
+    width: 100%;
+}
+
+form button {
+    width: 100%;
+    padding: 1.2rem;
+    background: #22c55e;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-weight: 900;
+    cursor: pointer;
+    font-size: 1.1rem;
+    transition: background 0.3s;
+}
+
+form button:hover { background: #16a34a; }
+
+/* --- 8. PROMO Y FOOTER --- */
+.bg-blue-600 { background-color: #2563eb !important; color: white !important; }
+
+footer {
+    background-color: #000;
+    padding: 80px 20px 40px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.clientes-container {
+
+    max-width: 900px;
+
+    margin: 0 auto;
+
+    text-align: center;
+
+}
+
+.clientes-lista {
+    color: #444; 
+    font-size: 11px; 
+    font-weight: 700; 
+    line-height: 2; 
+    text-transform: uppercase; 
+    letter-spacing: 1px;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.footer-copy {
+    margin-top: 60px;
+    font-size: 10px;
+    color: #222;
+    font-weight: 900;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+/* --- 9. AJUSTES PARA MÓVIL (RESPONSIVE) --- */
+@media (max-width: 768px) {
+    .grid-cols-3 {
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem;
+    }
+
+    .price-card.featured {
+        transform: scale(1) !important; 
+        margin: 10px 0;
+    }
+
+    .section-logo {
+        max-height: 220px !important;
+    }
+
+    .text-4xl {
+        font-size: 1.6rem !important;
+    }
+
+    /* Ocultamos sidebars en móvil para mejor lectura */
+    .sidebar-left, .sidebar-right {
+        display: none; 
+    }
+
+    form input, form select, form textarea {
+        font-size: 16px !important; /* Evita zoom molesto en iPhone */
+    }
+}
